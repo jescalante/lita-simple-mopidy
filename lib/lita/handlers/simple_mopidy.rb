@@ -13,6 +13,10 @@ module Lita
         }
       )
 
+      def self.default_config(config)
+        config.http_server = nil
+      end
+
       def execute(response)
         action = response.matches[0][0]
 
