@@ -1,5 +1,6 @@
 require "lita"
 require "httpi"
+require "json"
 
 module Lita
   module Handlers
