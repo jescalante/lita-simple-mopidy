@@ -1,4 +1,5 @@
 require "lita"
+require "curb"
 require "httpi"
 require "json"
 
