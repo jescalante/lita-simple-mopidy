@@ -4,8 +4,6 @@ require "httpi"
 module Lita
   module Handlers
     class SimpleMopidy < Handler
-      URL = "http://mopidi.local:6680/mopidy/rpc"
-
       route(
         /(?:music|mopidy)(?:\s+me)? (.+)/,
         :execute,
@@ -19,7 +17,7 @@ module Lita
         action = response.matches[0][0]
 
         HTTPI.post(
-          URL,
+          Lita.config.handlers.simple_mopidy.http_server,
           {
             "method"  => "core.playback.#{ action }",
             "jsonrpc" => "2.0",
