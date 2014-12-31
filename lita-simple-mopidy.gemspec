@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-simple-mopidy"
   spec.version       = "0.0.1"
-  spec.authors       = ["José Escalante"]
+  spec.authors       = ["Jose Escalante"]
   spec.email         = ["joe.escalante@gmail.com"]
   spec.description   = %q{ Mopidy simple handler for Lita }
   spec.summary       = %q{ Mopidy simple handler for Lita }
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rack-test"
   spec.add_development_dependency "rspec", ">= 3.0.0"
+  spec.add_development_dependency "httpi", "~> 1.1.0"
 end
