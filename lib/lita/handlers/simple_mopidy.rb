@@ -21,6 +21,7 @@ module Lita
       def execute(response)
         action = response.matches[0][0]
 
+        HTTPI.adapter = :curb
         HTTPI.post(
           Lita.config.handlers.simple_mopidy.http_server,
           {
