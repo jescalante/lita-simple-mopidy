@@ -22,7 +22,7 @@ module Lita
       def execute(response)
         action = response.matches[0][0]
 
-        param1, param2 = action.split(" ").map(&:strip)
+        param1, param2 = action.split(" ")
 
         body = {
           "method"  => "core.playback.#{ param1 }",
@@ -30,7 +30,7 @@ module Lita
           "id"      => 1
         }
 
-        body["params"] = if param1 == "set_volume" && param2.present?
+        body["params"] = if param1 == "set_volume" && !param2.nil?
           { "volume" => param2.to_i }
         else
           {}
