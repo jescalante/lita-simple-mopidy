@@ -22,15 +22,23 @@ module Lita
       def execute(response)
         action = response.matches[0][0]
 
+        param1, param2 = action.split(" ").map(&:strip)
+
+        body = {
+          "method"  => "core.playback.#{ param1 }",
+          "jsonrpc" => "2.0",
+          "id"      => 1
+        }
+
+        body["params"] = if param1 == "set_volume" && param2.present?
+          { "volume" => param2.to_i }
+        else
+          {}
+        end
+
         HTTPI.adapter = :curb
         HTTPI.post(
-          Lita.config.handlers.simple_mopidy.http_server,
-          {
-            "method"  => "core.playback.#{ action }",
-            "jsonrpc" => "2.0",
-            "params"  => {},
-            "id" => 1
-          }.to_json,
+          body.to_json,
           :curb
         )
 
