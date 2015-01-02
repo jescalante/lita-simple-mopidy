@@ -38,6 +38,7 @@ module Lita
 
         HTTPI.adapter = :curb
         HTTPI.post(
+          Lita.config.handlers.simple_mopidy.http_server,
           body.to_json,
           :curb
         )
